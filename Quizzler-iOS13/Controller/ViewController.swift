@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         questionLabel.text = quizBrain.quiz[quizBrain.questionNumber + 1].text
     }
-
+    
     @IBAction func answerButtonPressed(_ sender: UIButton) 
     {
         let userAnswer = sender.currentTitle
@@ -26,15 +26,10 @@ class ViewController: UIViewController {
         else{
             sender.backgroundColor = UIColor.red
         }
-        
-      
-        }
+        quizBrain.nextQuestion()
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
-
-        quizBrain.questionNumber += 1
-        UpdateUI()
+        
     }
-    
     @objc func UpdateUI()
     {
         questionLabel.text = quizBrain.getQuestionText()
@@ -44,5 +39,6 @@ class ViewController: UIViewController {
         falseButton.backgroundColor = UIColor.clear
     }
 }
+
 
 

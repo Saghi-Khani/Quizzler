@@ -8,7 +8,8 @@
 //Handles all the login within the app
 import Foundation
 
-struct QuizBrain {
+struct QuizBrain 
+{
     let quiz = [ Question(q: "A slug's blood is green.", a: "True"),
                  Question(q: "Approximately one quarter of human bones are in the feet.", a: "True"),
                  Question(q: "The total surface area of two human lungs is approximately 70 square metres.", a: "True"),
@@ -44,12 +45,16 @@ struct QuizBrain {
         return progress
     }
     
-    func nextQuestion()
+    mutating func nextQuestion()
     {
-        if(questionNumber >= (quiz.count-1))
+        if(questionNumber + 1 < quiz.count)
+        {
+            questionNumber += 1
+        }
+        else
         {
             questionNumber = 0
         }
     }
-    
+}
     
